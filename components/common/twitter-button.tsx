@@ -13,7 +13,9 @@ const STYLES: Record<string, string> = {
 }
 
 export function TwitterButton({ message, text, size = 'default' }: Props) {
-  const twitterShareUrl = `https://twitter.com/intent/tweet?url=https://empareja-las-cartas.vercel.app?text=${text}&text=${message}`
+  const twitterShareUrl = encodeURI(
+    `https://twitter.com/intent/tweet?url=https://empareja-las-cartas.vercel.app?text=${text}&text=${message}`
+  )
 
   return (
     <Link
