@@ -25,7 +25,7 @@ export default async function (request: NextRequest) {
     (
       <div tw="flex flex-col justify-center items-center w-full h-full">
         <p tw="text-8xl text-[#112d4e] font-bold">Empareja las cartas</p>
-        <p tw="text-5xl text-gray-600 font-semibold">{text}</p>
+        <p tw="text-6xl text-gray-600 font-semibold">{text}</p>
       </div>
     ),
     {
