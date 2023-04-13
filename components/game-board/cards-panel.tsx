@@ -1,4 +1,4 @@
-import { useSelectedCards } from '@/hooks/hooks/useSelectedCards'
+import { useSelectedCards } from '@hooks/useSelectedCards'
 import { useEffect } from 'react'
 import { Card } from './card'
 
