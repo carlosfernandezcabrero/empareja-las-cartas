@@ -9,7 +9,7 @@ import type { GetServerSidePropsContext } from 'next'
 import Head from 'next/head'
 
 export default function Welcome({ text }: { text: string }) {
-  const ogImageUrl = `https://empareja-las-cartas-og-image.carlos-fernandez-cabrero.workers.dev/?text=${text}`
+  const ogImageUrl = `https://empareja-las-cartas.vercel.app/api/og?text=${text}`
 
   return (
     <>
