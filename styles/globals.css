@@ -27,7 +27,7 @@
   }
 
   .press-animation {
-    animation: scale-down-center 0.4s;
+    @apply scale-90;
   }
 
   .rotate-animation {
@@ -50,15 +50,6 @@
     }
     100% {
       transform: rotateY(360deg);
-    }
-  }
-
-  @keyframes scale-down-center {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0.5);
     }
   }
 }
