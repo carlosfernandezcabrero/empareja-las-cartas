@@ -29,7 +29,10 @@ export function Header() {
         Empareja las cartas
       </h1>
       <div className="flex-1 flex justify-end">
-        <TwitterButton message={messageTwitter} subText="Entrena tu memoria" />
+        <TwitterButton
+          message={messageTwitter}
+          text="Pon a prueba tu memoria"
+        />
       </div>
     </header>
   )

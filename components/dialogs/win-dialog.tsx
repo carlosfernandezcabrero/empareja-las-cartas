@@ -33,7 +33,7 @@ export function WinDialog({ timeTaken, tryAgainAction }: Props) {
           <TwitterButton
             size="small"
             message={messageTwitter}
-            subText={`Tiempo tardado: ${timeTakenFormatted}`}
+            text={`Tiempo tardado: ${timeTakenFormatted}`}
           />
         </div>
       </div>
