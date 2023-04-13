@@ -1,15 +1,12 @@
 module.exports = {
-  extends: [
-    'next/core-web-vitals',
-    '../node_modules/ts-standard/eslintrc.json'
-  ],
+  extends: ['next/core-web-vitals', './node_modules/ts-standard/eslintrc.json'],
   parserOptions: {
     project: './tsconfig.json',
     tsconfigRootDir: __dirname
   },
   settings: {
     next: {
-      rootDir: 'www/'
+      rootDir: './'
     }
   },
   rules: {
