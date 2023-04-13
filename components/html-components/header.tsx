@@ -31,7 +31,7 @@ export function Header() {
       <div className="flex-1 flex justify-end">
         <TwitterButton
           message={messageTwitter}
-          text="¡Pon a prueba tu memoria!"
+          text="¡Pon a prueba tu memoria 🧠!"
         />
       </div>
     </header>

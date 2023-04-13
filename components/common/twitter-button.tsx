@@ -13,9 +13,12 @@ const STYLES: Record<string, string> = {
 }
 
 export function TwitterButton({ message, text, size = 'default' }: Props) {
-  const twitterShareUrl = encodeURI(
-    `https://twitter.com/intent/tweet?url=https://empareja-las-cartas.vercel.app?text=${text}&text=${message}`
-  )
+  const url = new URL('https://empareja-las-cartas.vercel.app')
+  url.searchParams.set('text', text)
+
+  const twitterShareUrl = new URL('https://twitter.com/intent/tweet')
+  twitterShareUrl.searchParams.set('text', message)
+  twitterShareUrl.searchParams.set('url', url.toString())
 
   return (
     <Link
