@@ -24,7 +24,7 @@ export default async function (request: NextRequest) {
   return new ImageResponse(
     (
       <div
-        tw="flex flex-col justify-center items-center w-full h-full"
+        tw="flex flex-col justify-center items-center w-full h-full bg-white"
         style={{
           backgroundImage:
             'url(https://empareja-las-cartas.vercel.app/images/app-background.png)'
