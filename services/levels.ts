@@ -1,7 +1,4 @@
-import levelsJSON from '@/data/levels.json' assert { type: 'json' }
-import type { LevelProperties } from '@/types'
-
-const levels = levelsJSON as Record<string, LevelProperties>
+import levels from '@/data/levels'
 
 export function getLevels() {
   return levels

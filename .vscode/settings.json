@@ -8,5 +8,6 @@
             "source.organizeImports": true
         }
     },
-    "cSpell.words": ["Escoga"]
+    "cSpell.words": ["Escoga"],
+    "editor.codeLens": true
 }

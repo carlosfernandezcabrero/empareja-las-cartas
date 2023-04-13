@@ -16,6 +16,7 @@
         "typescript": "5.0.2"
     },
     "devDependencies": {
+        "@playwright/test": "1.32.3",
         "@types/canvas-confetti": "1.6.0",
         "@types/node": "18.15.10",
         "@types/react": "18.0.30",
