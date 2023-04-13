@@ -1,4 +1,3 @@
-import '../node_modules/pattern.css/dist/pattern.css'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 
