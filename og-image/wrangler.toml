@@ -1,0 +1,6 @@
+compatibility_date = "2023-04-12"
+name = "empareja-las-cartas-og-image"
+main = "og-image/index.js"
+
+[site]
+bucket = "./assets"

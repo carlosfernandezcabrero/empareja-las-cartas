@@ -1,0 +1,21 @@
+{
+    "name": "empareja-las-cartas-og-image",
+    "type": "module",
+    "devDependencies": {
+        "@resvg/resvg-js": "2.4.1",
+        "satori": "0.4.4",
+        "satori-html": "0.3.2",
+        "standard": "17.0.0",
+        "wrangler": "2.15.0"
+    },
+    "dependencies": {
+        "hono": "3.1.5",
+        "workers-og": "0.0.12"
+    },
+    "eslintConfig": {
+        "extends": "../node_modules/standard/eslintrc.json",
+        "rules": {
+            "space-before-function-paren": "off"
+        }
+    }
+}
