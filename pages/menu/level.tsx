@@ -1,3 +1,4 @@
+import { DialogDescription } from '@/components/dialog/dialog-description'
 import { getLevels } from '@/services/levels'
 import { NavigationButton } from '@components/common/navigation-button'
 import { PreviousPageButton } from '@components/common/previous-page-button'
@@ -19,9 +20,9 @@ export default function Level({ levels }: Props) {
       <DialogContainer>
         <DialogHeader>
           <DialogTitle>Nivel de dificultad</DialogTitle>
-          <p className="mt-1.5">
+          <DialogDescription>
             Escoga el nivel de dificultad con el que jugar
-          </p>
+          </DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col items-center gap-y-4">
