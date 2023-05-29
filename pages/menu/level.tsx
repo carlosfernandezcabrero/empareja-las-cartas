@@ -1,4 +1,5 @@
 import { DialogDescription } from '@/components/dialog/dialog-description'
+import { DialogItem } from '@/components/dialog/dialog-item'
 import { getLevels } from '@/services/levels'
 import { NavigationButton } from '@components/common/navigation-button'
 import { PreviousPageButton } from '@components/common/previous-page-button'
@@ -27,18 +28,14 @@ export default function Level({ levels }: Props) {
 
         <div className="flex flex-col items-center gap-y-4">
           {Object.entries(levels).map(([key, { name }]) => (
-            <Link
-              key={key}
-              href={`/game?levelId=${key}`}
-              className="border-2 border-gray-900 w-full rounded-xl text-center px-4 py-1.5 hover:bg-indigo-100 active:press-animation"
-            >
-              {name}
+            <Link key={key} href={`/game?levelId=${key}`}>
+              <DialogItem>{name}</DialogItem>
             </Link>
           ))}
         </div>
 
         <DialogFooter>
-          <NavigationButton url="/menu">
+          <NavigationButton url="/menu/signin">
             <PreviousPageButton />
           </NavigationButton>
         </DialogFooter>

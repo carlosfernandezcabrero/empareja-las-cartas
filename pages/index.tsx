@@ -47,7 +47,7 @@ export default function Welcome({ text }: { text: string }) {
           </div>
 
           <DialogFooter>
-            <NavigationButton url="/menu/level">
+            <NavigationButton url="/menu/signin">
               <NextPageButton />
             </NavigationButton>
           </DialogFooter>
