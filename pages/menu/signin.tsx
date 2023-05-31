@@ -6,13 +6,14 @@ import { DialogFooter } from '@/components/dialog/dialog-footer'
 import { DialogHeader } from '@/components/dialog/dialog-header'
 import { DialogItem } from '@/components/dialog/dialog-item'
 import { DialogTitle } from '@/components/dialog/dialog-title'
-import { GitHub } from '@/components/icons/github'
 import { CleanLayout } from '@/components/layouts/clean-layout'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 
 export default function SignIn() {
-  const handleSignIn = () => signIn()
+  const handleSignIn = () => {
+    signIn('undefined', { callbackUrl: 'http://localhost:3000/menu/level' })
+  }
 
   return (
     <CleanLayout>
@@ -26,10 +27,7 @@ export default function SignIn() {
 
         <div className="flex flex-col items-center gap-y-4">
           <button onClick={handleSignIn}>
-            <DialogItem>
-              <GitHub width="w-6" height="h-6" />
-              GitHub
-            </DialogItem>
+            <DialogItem>Continuar</DialogItem>
           </button>
           <Link href="/menu/level">
             <DialogItem>No iniciar sesión</DialogItem>
