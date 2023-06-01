@@ -28,7 +28,7 @@ export function Header({ timeLeftInMilliseconds, levelName }: Props) {
   const user = sessionData?.user
 
   const handleLogout = () => {
-    signOut({ callbackUrl: `http://localhost:3000/menu/level` })
+    signOut({ callbackUrl: 'http://localhost:3000/menu/level' })
   }
 
   return (
