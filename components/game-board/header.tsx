@@ -1,13 +1,10 @@
 import { getTimeFormatted } from '@/utils/dates'
-import type { Session } from 'next-auth'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 
 interface Props {
   timeLeftInMilliseconds: number
   levelName: string
-  sessionData: Session
 }
 
 const TIME_LEFT_STYLES: Record<string, string> = {
@@ -16,15 +13,10 @@ const TIME_LEFT_STYLES: Record<string, string> = {
   danger: 'text-red-600 font-bold blink-animation'
 }
 
-export function Header({
-  timeLeftInMilliseconds,
-  levelName,
-  sessionData
-}: Props) {
-  const router = useRouter()
+export function Header({ timeLeftInMilliseconds, levelName }: Props) {
+  const { data: sessionData } = useSession()
 
   let timeCounterState: string
-
   if (timeLeftInMilliseconds >= 61_000) {
     timeCounterState = 'default'
   } else if (timeLeftInMilliseconds < 31_000) {

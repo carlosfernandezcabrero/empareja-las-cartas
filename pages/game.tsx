@@ -9,8 +9,6 @@ import { useCountdown } from '@hooks/useCountdown'
 import { usePairedCards } from '@hooks/usePairedCards'
 import type { LevelPropertiesWithImages } from '@types'
 import type { GetServerSidePropsContext } from 'next'
-import type { Session } from 'next-auth'
-import { useSession } from 'next-auth/react'
 
 export default function Game({
   timeLeft,
@@ -23,7 +21,6 @@ export default function Game({
     images.length,
     timer.clearTimer
   )
-  const { data } = useSession()
 
   function resetGame() {
     resetPairedCards()
@@ -32,11 +29,7 @@ export default function Game({
 
   return (
     <LayoutWithHeaderAndPreloadImages images={originalImages}>
-      <BoardHeader
-        timeLeftInMilliseconds={timer.time}
-        levelName={name}
-        sessionData={data as Session}
-      />
+      <BoardHeader timeLeftInMilliseconds={timer.time} levelName={name} />
 
       <CardsPanel
         handleGuessCard={addPairedCard}
