@@ -7,12 +7,13 @@ import { DialogHeader } from '@/components/dialog/dialog-header'
 import { DialogItem } from '@/components/dialog/dialog-item'
 import { DialogTitle } from '@/components/dialog/dialog-title'
 import { CleanLayout } from '@/components/layouts/clean-layout'
+import { HOST_URL } from '@config'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 
 export default function SignIn() {
   const handleSignIn = () => {
-    signIn('undefined', { callbackUrl: 'http://localhost:3000/menu/level' })
+    signIn('undefined', { callbackUrl: `${HOST_URL}/menu/level` })
   }
 
   return (

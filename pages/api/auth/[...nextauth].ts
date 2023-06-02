@@ -8,6 +8,7 @@ export const authOptions = {
       clientSecret: process.env.AUTH0_CLIENT_SECRET as string,
       issuer: process.env.AUTH0_ISSUER
     })
-  ]
+  ],
+  secret: process.env.NEXTAUTH_SECRET
 }
 export default NextAuth(authOptions)
