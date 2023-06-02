@@ -9,10 +9,10 @@ test.describe('Home page tests', () => {
     await expect(page).toHaveTitle(/Empareja las cartas 🃏/)
   })
 
-  test('Home page link to levels menu', async ({ page }) => {
+  test('Home page link to login', async ({ page }) => {
     await page.locator('a').click()
 
     const h1 = page.locator('h1')
-    await expect(h1).toHaveText('Nivel de dificultad')
+    await expect(h1).toHaveText('Iniciar Sesión')
   })
 })
