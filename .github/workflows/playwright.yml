@@ -23,3 +23,4 @@ jobs:
         run: npm exec playwright test
         env:
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL: process.env.VERCEL_URL
