@@ -16,6 +16,15 @@
   #__next {
     height: 100%;
   }
+  #main_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  #main_container main {
+    flex-grow: 1;
+  }
 }
 
 @layer utilities {
