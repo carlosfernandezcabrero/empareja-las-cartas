@@ -16,7 +16,7 @@ export function BasicLayout({ children }: Props) {
         <meta name="author" content="Carlos Fernandez Cabrero" />
       </Head>
 
-      <div className="pattern-cross-dots-xl text-[#DBE2EF]/80 h-full">
+      <div className="pattern-cross-dots-xl bg-repeat text-[#DBE2EF]/80 min-h-screen">
         <div className="text-[#333]">{children}</div>
       </div>
     </>

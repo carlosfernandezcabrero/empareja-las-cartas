@@ -8,7 +8,11 @@ Empieza ya ⬇️
 
 `
 
-export function Header() {
+interface Props {
+  title: string
+}
+
+export function Header({ title }: Props) {
   return (
     <header className="text-center pt-8 pb-4 flex justify-center items-center px-6 flex-col gap-y-4 gap-x-10 lg:flex-row">
       <div className="flex-1 flex items-center justify-start">
@@ -20,7 +24,7 @@ export function Header() {
         </Link>
       </div>
       <h1 className="text-5xl text-[#112d4e] font-semibold tracking-tight">
-        Empareja las cartas
+        {title}
       </h1>
       <div className="flex-1 flex justify-end">
         <TwitterButton
