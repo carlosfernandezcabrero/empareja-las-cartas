@@ -12,7 +12,12 @@ interface Props {
   title: string
 }
 
-const HeaderButton = ({ children, url }: { children: any; url: string }) => {
+interface HeaderButtonProps {
+  children: any
+  url: string
+}
+
+const HeaderButton = ({ children, url }: HeaderButtonProps) => {
   return (
     <Link
       href={url}
