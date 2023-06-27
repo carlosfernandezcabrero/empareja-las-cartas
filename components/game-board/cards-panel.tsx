@@ -1,20 +1,30 @@
 import { useSelectedCards } from '@hooks/useSelectedCards'
-import { useEffect } from 'react'
+import { useEffect, type Dispatch, type SetStateAction } from 'react'
 import { Card } from './card'
 
 interface Props {
   images: string[]
   pairedCards: string[]
   handleGuessCard: (cardA: string, cardB: string) => void
+  setErrors: Dispatch<SetStateAction<number>>
 }
 
-export function CardsPanel({ images, pairedCards, handleGuessCard }: Props) {
+export function CardsPanel({
+  images,
+  pairedCards,
+  handleGuessCard,
+  setErrors
+}: Props) {
   const { selectedCards, itFailed, addSelectedCard, resetSelectedCards } =
     useSelectedCards(handleGuessCard)
 
   useEffect(() => {
     if (pairedCards.length === 0) resetSelectedCards()
   }, [pairedCards])
+
+  useEffect(() => {
+    if (itFailed) setErrors((errors) => errors + 1)
+  }, [itFailed])
 
   return (
     <section className="flex justify-center">

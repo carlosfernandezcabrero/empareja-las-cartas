@@ -4,9 +4,10 @@ import Image from 'next/image'
 
 interface Props {
   timeConsumed: number
+  errors: number
 }
 
-export function Header({ timeConsumed }: Props) {
+export function Header({ timeConsumed, errors }: Props) {
   const { data: sessionData } = useSession()
   const user = sessionData?.user
 
@@ -41,6 +42,10 @@ export function Header({ timeConsumed }: Props) {
         <div className="text-center">
           <p className="text-color-body text-xl font-bold">Tiempo</p>
           <p className="text-color-body">{getTimeFormatted(timeConsumed)}</p>
+        </div>
+        <div className="text-center">
+          <p className="text-color-body text-xl font-bold">Errores</p>
+          <p className="text-color-body">{errors}</p>
         </div>
       </div>
     </header>

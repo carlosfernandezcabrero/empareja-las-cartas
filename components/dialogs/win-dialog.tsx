@@ -10,6 +10,7 @@ import { TwitterButton } from '../common/twitter-button'
 
 interface Props {
   timeTaken: number
+  errors: number
   tryAgainAction: () => void
 }
 
@@ -20,7 +21,7 @@ Empieza ya ⬇️
 
 `
 
-export function WinDialog({ timeTaken, tryAgainAction }: Props) {
+export function WinDialog({ timeTaken, errors, tryAgainAction }: Props) {
   const timeTakenFormatted = getTimeFormatted(timeTaken)
   const { data: sessionData } = useSession()
 
@@ -34,7 +35,7 @@ export function WinDialog({ timeTaken, tryAgainAction }: Props) {
         username: sessionData?.user?.name,
         data: {
           avatar: sessionData?.user?.image,
-          score: timeTaken
+          score: timeTaken + errors * 100
         }
       })
     })
