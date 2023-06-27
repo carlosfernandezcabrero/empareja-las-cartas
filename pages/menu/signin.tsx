@@ -7,10 +7,21 @@ import { DialogHeader } from '@/components/dialog/dialog-header'
 import { DialogItem } from '@/components/dialog/dialog-item'
 import { DialogTitle } from '@/components/dialog/dialog-title'
 import { CleanLayout } from '@/components/layouts/clean-layout'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function SignIn() {
+  const { status } = useSession()
+  const { push } = useRouter()
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      push('/menu/level')
+    }
+  }, [])
+
   const handleSignIn = () => {
     signIn('undefined', { callbackUrl: '/menu/level' })
   }
