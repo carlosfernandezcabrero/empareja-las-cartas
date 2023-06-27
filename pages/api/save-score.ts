@@ -13,7 +13,7 @@ export default async function handle(
   const { avatar, score } = data
 
   await redis.set(username, avatar)
-  await redis.zadd('leaderboard', { score: score, member: username })
+  await redis.zadd('leaderboard', { score, member: username })
 
   return res.send('OK')
 }

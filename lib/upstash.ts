@@ -1,8 +1,8 @@
+import { Redis } from '@upstash/redis'
+
 declare global {
   var redis: Redis
 }
-
-import { Redis } from '@upstash/redis'
 
 const redis = global.redis || Redis.fromEnv()
 
