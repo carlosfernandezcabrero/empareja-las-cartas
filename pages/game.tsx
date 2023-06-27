@@ -1,22 +1,15 @@
 import { getImages } from '@/services/images'
-import { getLevelById } from '@/services/levels'
-import { WasteDialog } from '@components/dialogs/waste-dialog'
+import type { GameImages } from '@/types'
 import { WinDialog } from '@components/dialogs/win-dialog'
 import { CardsPanel } from '@components/game-board/cards-panel'
 import { Header as BoardHeader } from '@components/game-board/header'
 import { LayoutWithHeaderAndPreloadImages } from '@components/layouts/layout-with-header-and-preload-images'
-import { useCountdown } from '@hooks/useCountdown'
 import { usePairedCards } from '@hooks/usePairedCards'
-import type { LevelPropertiesWithImages } from '@types'
+import { useTimer } from '@hooks/useTimer'
 import type { GetServerSidePropsContext } from 'next'
 
-export default function Game({
-  timeLeft,
-  images,
-  originalImages,
-  name
-}: LevelPropertiesWithImages) {
-  const timer = useCountdown(timeLeft)
+export default function Game({ images, originalImages }: GameImages) {
+  const timer = useTimer()
   const { pairedCards, addPairedCard, resetPairedCards } = usePairedCards(
     images.length,
     timer.clearTimer
@@ -24,12 +17,13 @@ export default function Game({
 
   function resetGame() {
     resetPairedCards()
-    timer.resetAndStartTimer()
+    timer.restartTimer()
+    timer.startTimer()
   }
 
   return (
     <LayoutWithHeaderAndPreloadImages images={originalImages}>
-      <BoardHeader timeLeftInMilliseconds={timer.time} levelName={name} />
+      <BoardHeader timeConsumed={timer.time} />
 
       <CardsPanel
         handleGuessCard={addPairedCard}
@@ -38,12 +32,8 @@ export default function Game({
       />
 
       {pairedCards.length === images.length && (
-        <WinDialog
-          timeTaken={timeLeft - timer.time}
-          tryAgainAction={resetGame}
-        />
+        <WinDialog timeTaken={timer.time} tryAgainAction={resetGame} />
       )}
-      {timer.time < 0 && <WasteDialog tryAgainAction={resetGame} />}
     </LayoutWithHeaderAndPreloadImages>
   )
 }
@@ -51,7 +41,6 @@ export default function Game({
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   return {
     props: {
-      ...getLevelById(query.levelId as string),
       ...getImages()
     }
   }

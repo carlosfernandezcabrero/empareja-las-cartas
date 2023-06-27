@@ -1,9 +1,4 @@
-export interface LevelProperties {
-  name: string
-  timeLeft: number
-}
-
-export interface LevelPropertiesWithImages extends LevelProperties {
+export interface GameImages {
   images: string[]
   originalImages: string[]
 }

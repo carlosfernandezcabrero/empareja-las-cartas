@@ -18,12 +18,12 @@ export default function SignIn() {
 
   useEffect(() => {
     if (status === 'authenticated') {
-      push('/menu/level')
+      push('/game')
     }
   }, [])
 
   const handleSignIn = () => {
-    signIn('undefined', { callbackUrl: '/menu/level' })
+    signIn('undefined', { callbackUrl: '/game' })
   }
 
   return (
@@ -40,7 +40,7 @@ export default function SignIn() {
           <button onClick={handleSignIn}>
             <DialogItem>Continuar</DialogItem>
           </button>
-          <Link href="/menu/level">
+          <Link href="/game">
             <DialogItem>No iniciar sesión</DialogItem>
           </Link>
         </div>

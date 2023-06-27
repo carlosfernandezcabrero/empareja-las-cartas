@@ -16,7 +16,18 @@ export default function Leaderboard() {
 
   return (
     <LayoutWithHeader headerText="Clasificación">
-      <section className="mt-20 relative overflow-x-auto shadow-md rounded-lg border border-gray-300 w-full md:w-11/12 lg:w-7/12  xl:w-5/12 mx-auto">
+      <section className="mt-6 w-full md:w-11/12 lg:w-7/12  xl:w-5/12 mx-auto text-gray-900 bg-sky-50 border-2 border-black rounded-md p-4">
+        <h3 className="text-2xl mb-2">
+          ¿Como funciona el sistema de puntuación?
+        </h3>
+        <p>
+          Para calcular la puntuación se tiene en cuenta el tiempo que tardas en
+          resolver el juego, por lo que cuanto menos tiempo tardes en
+          resolverlo, mejor.
+        </p>
+      </section>
+
+      <section className="mt-10 relative overflow-x-auto shadow-md rounded-lg border border-gray-300 w-full md:w-11/12 lg:w-7/12  xl:w-5/12 mx-auto">
         <table className="w-full text-base text-left font-semibold">
           <thead className="text-base text-gray-800 bg-[#F2F5F9]">
             <tr>
@@ -27,7 +38,7 @@ export default function Leaderboard() {
                 Usuario
               </th>
               <th scope="col" className="px-6 py-3 font-semibold text-center">
-                Tiempo de resolución
+                Puntos
               </th>
             </tr>
           </thead>
