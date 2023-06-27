@@ -1,4 +1,4 @@
-import type { LevelProperties } from '@/types'
+import type { LevelProperties } from '@types'
 
 const levels: Record<string, LevelProperties> = {
   prueba: {

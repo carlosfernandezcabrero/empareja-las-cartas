@@ -1,4 +1,4 @@
-import { LayoutWithHeader } from '@/components/layouts/layout-with-header'
+import { LayoutWithHeader } from '@components/layouts/layout-with-header'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
