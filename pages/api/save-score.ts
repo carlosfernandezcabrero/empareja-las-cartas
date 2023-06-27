@@ -12,8 +12,15 @@ export default async function handle(
   const { username, data } = req.body
   const { avatar, score } = data
 
-  await redis.set(username, avatar)
-  await redis.zadd('leaderboard', { score, member: username })
+  const oldScore = await redis.zscore('leaderboard', username)
+  const userFromRedis = await redis.get(username)
+
+  if (!userFromRedis) {
+    await redis.set(username, avatar)
+  }
+  if (!oldScore || score > oldScore) {
+    await redis.zadd('leaderboard', { score, member: username })
+  }
 
   return res.send('OK')
 }

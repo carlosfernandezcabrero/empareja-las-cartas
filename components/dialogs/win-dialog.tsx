@@ -35,7 +35,7 @@ export function WinDialog({ timeTaken, errors, tryAgainAction }: Props) {
         username: sessionData?.user?.name,
         data: {
           avatar: sessionData?.user?.image,
-          score: timeTaken + errors * 100
+          score: Math.round((600000 - timeTaken - errors * 100) / 800)
         }
       })
     })

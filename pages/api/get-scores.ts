@@ -10,7 +10,8 @@ export default async function handle(
   }
 
   const keys = await redis.zrange('leaderboard', 0, -1, {
-    withScores: true
+    withScores: true,
+    rev: true
   })
 
   const users: Record<string, any> = {}

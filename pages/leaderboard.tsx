@@ -22,8 +22,8 @@ export default function Leaderboard() {
         </h3>
         <p>
           Para calcular la puntuación se tiene en cuenta el tiempo que tardas en
-          resolver el juego, por lo que cuanto menos tiempo tardes en
-          resolverlo, mejor.
+          resolver el juego y el número de intentos que necesitas para resolver
+          el juego.
         </p>
       </section>
 
