@@ -15,10 +15,7 @@ test.describe('Signin page tests', () => {
   test('Should go to auth0 login when choose login', async ({ page }) => {
     await page.locator('button').click()
     await page.waitForURL(
-      new RegExp(
-        /.*\/api\/auth\/signin\?callbackUrl=http.*%2Fmenu%2Flevel/,
-        'i'
-      )
+      new RegExp(/.*\/api\/auth\/signin\?callbackUrl=%2Fmenu%2Flevel/, 'i')
     )
   })
 })
