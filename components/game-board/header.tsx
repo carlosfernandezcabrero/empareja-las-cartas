@@ -1,5 +1,4 @@
 import { getTimeFormatted } from '@/utils/dates'
-import { HOST_URL } from '@config'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 
@@ -29,7 +28,7 @@ export function Header({ timeLeftInMilliseconds, levelName }: Props) {
   const user = sessionData?.user
 
   const handleLogout = () => {
-    signOut({ callbackUrl: `${HOST_URL}/menu/signin` })
+    signOut({ callbackUrl: `/menu/signin` })
   }
 
   return (

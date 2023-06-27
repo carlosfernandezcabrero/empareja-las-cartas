@@ -12,20 +12,31 @@ interface Props {
   title: string
 }
 
+const HeaderButton = ({ children, url }: { children: any; url: string }) => {
+  return (
+    <Link
+      href={url}
+      className="text-gray-900 bg-sky-100 hover:bg-sky-300 border-2 active:press-animation border-black rounded-md p-2 flex items-center justify-center"
+    >
+      {children}
+    </Link>
+  )
+}
+
 export function Header({ title }: Props) {
   return (
     <header className="text-center pt-8 pb-4 flex justify-center items-center px-6 flex-col gap-y-4 gap-x-10 lg:flex-row">
-      <div className="flex-1 flex items-center justify-start">
-        <Link
-          href="/"
-          className="text-gray-900 bg-sky-100 hover:bg-sky-300 border-2 active:press-animation border-black rounded-md p-2"
-        >
-          <HomeIcon width="w-9" height="h-9" />
-        </Link>
+      <div className="flex-1 flex gap-x-3 justify-start">
+        <HeaderButton url="/">
+          <HomeIcon width="w-9" height="h-9" strokeWidth={1.5} />
+        </HeaderButton>
+        <HeaderButton url="/leaderboard">Ranking</HeaderButton>
       </div>
+
       <h1 className="text-5xl text-[#112d4e] font-semibold tracking-tight">
         {title}
       </h1>
+
       <div className="flex-1 flex justify-end">
         <TwitterButton
           message={messageTwitter}

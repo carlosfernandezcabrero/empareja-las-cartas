@@ -4,6 +4,8 @@ import { DialogFooter } from '@components/dialog/dialog-footer'
 import { DialogHeader } from '@components/dialog/dialog-header'
 import { DialogTitle } from '@components/dialog/dialog-title'
 import { Button } from '@components/html-components/button'
+import { useSession } from 'next-auth/react'
+import { useEffect } from 'react'
 import { TwitterButton } from '../common/twitter-button'
 
 interface Props {
@@ -20,6 +22,23 @@ Empieza ya ⬇️
 
 export function WinDialog({ timeTaken, tryAgainAction }: Props) {
   const timeTakenFormatted = getTimeFormatted(timeTaken)
+  const { data: sessionData } = useSession()
+
+  useEffect(() => {
+    fetch('/api/save-score', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: sessionData?.user?.name,
+        data: {
+          avatar: sessionData?.user?.image,
+          score: timeTaken
+        }
+      })
+    })
+  }, [timeTaken])
 
   return (
     <DialogContainer size="small">
