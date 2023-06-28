@@ -6,7 +6,9 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "test:e2e": "playwright test"
+        "test": "pnpm run test:e2e && pnpm run test:unitary",
+        "test:e2e": "playwright test -c tests/e2e/playwright.config.ts",
+        "test:unitary": "playwright test -c tests/unitary/playwright.config.ts"
     },
     "dependencies": {
         "@upstash/redis": "1.21.0",

@@ -1,4 +1,5 @@
 import { getTimeFormatted } from '@/utils/dates'
+import { calculatePointers } from '@/utils/leaderboard'
 import { DialogContainer } from '@components/dialog/dialog-container'
 import { DialogFooter } from '@components/dialog/dialog-footer'
 import { DialogHeader } from '@components/dialog/dialog-header'
@@ -35,7 +36,7 @@ export function WinDialog({ timeTaken, errors, tryAgainAction }: Props) {
         username: sessionData?.user?.name,
         data: {
           avatar: sessionData?.user?.image,
-          score: Math.round((600000 - timeTaken - errors * 100) / 800)
+          score: calculatePointers(timeTaken, errors)
         }
       })
     })
