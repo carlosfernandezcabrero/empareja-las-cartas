@@ -6,7 +6,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "test": "pnpm run test:e2e && pnpm run test:unitary",
+        "test": "npm run test:e2e && npm run test:unitary",
         "test:e2e": "playwright test -c tests/e2e/playwright.config.ts",
         "test:unitary": "playwright test -c tests/unitary/playwright.config.ts"
     },
