@@ -6,7 +6,7 @@ import { Header as BoardHeader } from '@components/game-board/header'
 import { LayoutWithHeaderAndPreloadImages } from '@components/layouts/layout-with-header-and-preload-images'
 import { usePairedCards } from '@hooks/usePairedCards'
 import { useTimer } from '@hooks/useTimer'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Game({ images, originalImages }: GameImages) {
   const timer = useTimer()
@@ -14,8 +14,13 @@ export default function Game({ images, originalImages }: GameImages) {
     images.length,
     timer.clearTimer
   )
-  const [errors, setErrors] = useState(0)
-  const [currentImages, setCurrentImages] = useState(images)
+
+  const [errors, setErrors] = useState<number>(0)
+  const [currentImages, setCurrentImages] = useState<string[]>([])
+
+  useEffect(() => {
+    setCurrentImages(images)
+  }, [])
 
   function resetGame() {
     resetPairedCards()
