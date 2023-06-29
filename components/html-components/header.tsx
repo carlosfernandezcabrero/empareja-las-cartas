@@ -32,7 +32,7 @@ export function Header({ title }: Props) {
   return (
     <header className="text-center pt-8 pb-4 flex justify-center items-center px-6 flex-col gap-y-4 gap-x-10 lg:flex-row">
       <div className="flex-1 flex gap-x-3 justify-start">
-        <HeaderButton url="/">
+        <HeaderButton url="/game">
           <HomeIcon width="w-9" height="h-9" strokeWidth={1.5} />
         </HeaderButton>
         <HeaderButton url="/leaderboard">Ranking</HeaderButton>

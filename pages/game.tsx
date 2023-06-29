@@ -6,7 +6,6 @@ import { Header as BoardHeader } from '@components/game-board/header'
 import { LayoutWithHeaderAndPreloadImages } from '@components/layouts/layout-with-header-and-preload-images'
 import { usePairedCards } from '@hooks/usePairedCards'
 import { useTimer } from '@hooks/useTimer'
-import type { GetServerSidePropsContext } from 'next'
 import { useState } from 'react'
 
 export default function Game({ images, originalImages }: GameImages) {
@@ -16,9 +15,12 @@ export default function Game({ images, originalImages }: GameImages) {
     timer.clearTimer
   )
   const [errors, setErrors] = useState(0)
+  const [currentImages, setCurrentImages] = useState(images)
 
   function resetGame() {
     resetPairedCards()
+    const { images } = getImages()
+    setCurrentImages(images)
     timer.restartTimer()
     timer.startTimer()
     setErrors(0)
@@ -30,12 +32,12 @@ export default function Game({ images, originalImages }: GameImages) {
 
       <CardsPanel
         handleGuessCard={addPairedCard}
-        images={images}
+        images={currentImages}
         pairedCards={pairedCards}
         setErrors={setErrors}
       />
 
-      {pairedCards.length === images.length && (
+      {pairedCards.length === currentImages.length && (
         <WinDialog
           timeTaken={timer.time}
           tryAgainAction={resetGame}
@@ -46,7 +48,7 @@ export default function Game({ images, originalImages }: GameImages) {
   )
 }
 
-export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+export async function getServerSideProps() {
   return {
     props: {
       ...getImages()
