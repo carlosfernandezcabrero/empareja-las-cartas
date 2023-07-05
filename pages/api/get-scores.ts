@@ -1,4 +1,3 @@
-import { LEADERBOARD_TABLE_NAME } from '@/constants'
 import redis from '@/lib/upstash'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -10,7 +9,7 @@ export default async function handle(
     return res.status(405).json({ error: 'Method Not Allowed' })
   }
 
-  const keys = await redis.zrange(LEADERBOARD_TABLE_NAME, 0, -1, {
+  const keys = await redis.zrange('leaderboard', 0, -1, {
     withScores: true,
     rev: true
   })
