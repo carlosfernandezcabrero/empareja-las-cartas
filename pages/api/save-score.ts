@@ -17,9 +17,9 @@ export default async function handle(
 
   if (!userFromRedis) {
     await redis.set(username, avatar)
-    await redis.zadd('leaderboard', { score, member: username })
+    redis.zadd('leaderboard', { score, member: username })
   } else if (score > oldScore) {
-    await redis.zadd('leaderboard', { score, member: username })
+    redis.zadd('leaderboard', { score, member: username })
   }
 
   return res.send('OK')

@@ -15,6 +15,7 @@ export default async function handle(
   })
 
   const users: Record<string, any> = {}
+
   for (let i = 0; i < keys.length; i += 2) {
     const user = keys[i] as string
     const score = keys[i + 1]
