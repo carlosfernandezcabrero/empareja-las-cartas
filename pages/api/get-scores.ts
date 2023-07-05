@@ -9,7 +9,7 @@ export default async function handle(
     return res.status(405).json({ error: 'Method Not Allowed' })
   }
 
-  const keys = await redis.zrange('leaderboard', 0, -1, {
+  const keys = await redis.zrange('leaderboard-empareja-las-cartas', 0, -1, {
     withScores: true,
     rev: true
   })

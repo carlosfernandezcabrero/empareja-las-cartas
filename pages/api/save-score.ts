@@ -12,7 +12,10 @@ export default async function handle(
   const { username, data } = req.body
   const { avatar, score } = data
 
-  const oldScore = await redis.zscore('leaderboard', username)
+  const oldScore = await redis.zscore(
+    'leaderboard-empareja-las-cartas',
+    username
+  )
   const userFromRedis = await redis.get(username)
 
   if (!userFromRedis) {
