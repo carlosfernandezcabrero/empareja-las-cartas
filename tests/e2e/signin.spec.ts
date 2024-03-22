@@ -16,9 +16,16 @@ test.describe('Auth page tests', () => {
     test('Should go to auth0 login when choose login', async ({ page }) => {
       await page.getByRole('link', { name: 'Continuar' }).click()
 
-      await page.waitForURL(process.env.AUTH0_ISSUER_BASE_URL as string)
-      expect(page.getByLabel('Username or email address')).toBeVisible()
-      expect(page.getByLabel('Password')).toBeVisible()
+      await expect(
+        page.getByLabel('Username or email address', {
+          exact: true
+        })
+      ).toBeVisible()
+      await expect(
+        page.getByLabel('Password', {
+          exact: true
+        })
+      ).toBeVisible()
     })
   })
 })
