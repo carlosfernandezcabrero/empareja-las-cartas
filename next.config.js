@@ -8,9 +8,7 @@ const nextConfig = {
       's.gravatar.com'
     ]
   },
-  experimental: {
-    appDir: true
-  }
+  experimental: {}
 }
 
 module.exports = nextConfig
