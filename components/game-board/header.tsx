@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import { getTimeFormatted } from '@/utils/dates'
-import { signOut, useSession } from 'next-auth/react'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import Image from 'next/image'
 
 interface Props {
@@ -8,19 +9,14 @@ interface Props {
 }
 
 export function Header({ timeConsumed, errors }: Props) {
-  const { data: sessionData } = useSession()
-  const user = sessionData?.user
-
-  const handleLogout = () => {
-    signOut({ callbackUrl: '/menu/signin' })
-  }
+  const { user, isLoading } = useUser()
 
   return (
     <header className="mb-12 mt-6">
-      {sessionData && (
+      {!isLoading && (
         <div className="mb-8 flex flex-col sm:flex-row items-center justify-center gap-x-4">
           <Image
-            src={user?.image as string}
+            src={user?.picture as string}
             width={60}
             height={60}
             alt="Avatar"
@@ -28,12 +24,12 @@ export function Header({ timeConsumed, errors }: Props) {
           />
           <div className="mt-1 sm:mt-0">
             <p className="text-color-body text-xl text-black">{user?.name}</p>
-            <button
-              onClick={handleLogout}
+            <a
+              href="/api/auth/logout"
               className="bg-red-500 text-white rounded-md px-1.5 text-base font-medium hover:bg-red-600"
             >
               Cerrar Sesión
-            </button>
+            </a>
           </div>
         </div>
       )}

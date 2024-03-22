@@ -1,11 +1,11 @@
 import { getTimeFormatted } from '@/utils/dates'
 import { calculatePointers } from '@/utils/leaderboard'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import { DialogContainer } from '@components/dialog/dialog-container'
 import { DialogFooter } from '@components/dialog/dialog-footer'
 import { DialogHeader } from '@components/dialog/dialog-header'
 import { DialogTitle } from '@components/dialog/dialog-title'
 import { Button } from '@components/html-components/button'
-import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 import { TwitterButton } from '../common/twitter-button'
 
@@ -24,7 +24,7 @@ Empieza ya ⬇️
 
 export function WinDialog({ timeTaken, errors, tryAgainAction }: Props) {
   const timeTakenFormatted = getTimeFormatted(timeTaken)
-  const { data: sessionData } = useSession()
+  const { user } = useUser()
 
   useEffect(() => {
     fetch('/api/save-score', {
@@ -33,9 +33,9 @@ export function WinDialog({ timeTaken, errors, tryAgainAction }: Props) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        username: sessionData?.user?.name,
+        username: user?.name,
         data: {
-          avatar: sessionData?.user?.image,
+          avatar: user?.picture,
           score: calculatePointers(timeTaken, errors)
         }
       })

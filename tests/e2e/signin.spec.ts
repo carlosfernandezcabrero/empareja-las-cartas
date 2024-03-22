@@ -1,19 +1,24 @@
-import { test } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
-test.beforeEach(async ({ page }) => {
-  await page.goto('/menu/signin')
-})
+test.describe('Auth page tests', () => {
+  test.describe('Sign in', () => {
+    test.beforeEach(async ({ page }) => {
+      await page.goto('/menu/signin')
+    })
 
-test.describe('Signin page tests', () => {
-  test('Should go to game page when choose play as guess', async ({ page }) => {
-    await page.locator('a[href="/game"]').click()
-    await page.waitForURL('/game')
-  })
+    test('Should go to game page when choose play as guess', async ({
+      page
+    }) => {
+      await page.locator('a[href="/game"]').click()
+      await page.waitForURL('/game')
+    })
 
-  test('Should go to auth0 login when choose login', async ({ page }) => {
-    await page.locator('button').click()
-    await page.waitForURL(
-      new RegExp(/.*\/api\/auth\/signin\?callbackUrl=%2Fgame/, 'i')
-    )
+    test('Should go to auth0 login when choose login', async ({ page }) => {
+      await page.getByRole('link', { name: 'Continuar' }).click()
+
+      await page.waitForURL(process.env.AUTH0_ISSUER_BASE_URL as string)
+      expect(page.getByLabel('Username or email address')).toBeVisible()
+      expect(page.getByLabel('Password')).toBeVisible()
+    })
   })
 })
