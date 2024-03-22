@@ -14,6 +14,7 @@ test.describe('Auth page tests', () => {
     })
 
     test('Should go to auth0 login when choose login', async ({ page }) => {
+      test.setTimeout(10000)
       await page.getByRole('link', { name: 'Continuar' }).click()
 
       await expect(
