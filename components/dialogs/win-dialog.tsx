@@ -27,6 +27,8 @@ export function WinDialog({ timeTaken, errors, tryAgainAction }: Props) {
   const { user } = useUser()
 
   useEffect(() => {
+    if (timeTaken === 0) return
+
     fetch('/api/save-score', {
       method: 'POST',
       headers: {

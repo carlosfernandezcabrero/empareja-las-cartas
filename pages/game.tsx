@@ -42,13 +42,14 @@ export default function Game({ images, originalImages }: GameImages) {
         setErrors={setErrors}
       />
 
-      {pairedCards.length === currentImages.length && (
-        <WinDialog
-          timeTaken={timer.time}
-          tryAgainAction={resetGame}
-          errors={errors}
-        />
-      )}
+      {pairedCards.length === currentImages.length &&
+        pairedCards.length > 0 && (
+          <WinDialog
+            timeTaken={timer.time}
+            tryAgainAction={resetGame}
+            errors={errors}
+          />
+        )}
     </LayoutWithHeaderAndPreloadImages>
   )
 }
