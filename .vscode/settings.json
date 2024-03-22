@@ -1,16 +1,4 @@
 {
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true
-        }
-    },
-    "cSpell.words": [
-        "Escoga"
-    ],
-    "editor.codeLens": true,
-    "editor.wordWrap": "on"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
