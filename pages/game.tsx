@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { getImages } from '@/services/images'
 import type { GameImages } from '@/types'
 import { WinDialog } from '@components/dialogs/win-dialog'
